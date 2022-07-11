@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import {useRef} from "react";
+import Canvas from './components/Canvas'
+import Table from "./components/Table";
+import Input from "./components/Input"
+import {useState} from "react";
+
 
 function App() {
+
+  const canvas = useRef()
+    const [items, setItems] = useState({})
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+          <Input setItems={setItems}/>
+        <Table/>
+        <Canvas canvas={canvas}/>
+      </>
   );
 }
 
