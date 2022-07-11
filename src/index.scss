@@ -50,6 +50,7 @@ body {
       left: 10px;
       z-index: 1;
       transition: all ease-in-out 0.3s;
+      pointer-events: none;
     }
   }
 }
