@@ -1,8 +1,8 @@
 import React from "react";
 
-const Table = () => {
+const Table = ({items}) => {
     return (
-        <table>
+        <table id={'itemTable'}>
             <thead>
                 <tr>
                     <th>product name</th>
@@ -13,12 +13,16 @@ const Table = () => {
 
             </thead>
             <tbody>
-                <tr>
-                    <td>Lorem</td>
-                    <td>2</td>
-                    <td>4</td>
-                    <td>8</td>
-                </tr>
+            {Object.values(items).map((row, index) => {
+                return (
+                    <tr key={`row-${index}`}>
+                        <td key={`name-${index}`}>{row['productInput-form-input-name']}</td>
+                        <td key={`amount-${index}`}>{row['productInput-form-input-amount']}</td>
+                        <td key={`costPerUnit-${index}`}>{row['productInput-form-input-costPerUnit']}</td>
+                        <td key={`totalCost-${index}`}>{row['productInput-form-input-totalCost']}</td>
+                    </tr>
+                )
+            })}
             </tbody>
         </table>
     )

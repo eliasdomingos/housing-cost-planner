@@ -1,22 +1,41 @@
 import React from 'react'
 import {useState,useRef} from "react";
 
-const Input = ({setItems}) => {
+const Input = ({setItems, items, rows, setRows}) => {
 
     const form = useRef()
 
-    const createItemObject = (e) => {
-        e.preventDefault()
+    const createItemObject = () => {
         const formElement = form.current
         const formData = new FormData(formElement)
+        const currRow = rows
+        const newTableRow = {}
 
         const itemObject = {}
 
         for (const pair of formData.entries()) {
-            itemObject[pair[0]] = pair[1]
+            if (pair[1] === '') {
+                alert('fill all fields')
+                return;
+            }else {
+                itemObject[pair[0]] = pair[1]
+            }
         }
 
-        console.log(Object.entries(itemObject))
+        newTableRow[currRow] = itemObject
+        const newItems = {...items, ...newTableRow}
+
+        localStorage.setItem('items', JSON.stringify(newItems))
+
+        setItems(newItems)
+        setRows(currRow + 1)
+    }
+
+
+    const addNewItem = (e) => {
+        e.preventDefault()
+
+        createItemObject()
     }
     return (
         <form id={'productInput-form'} ref={form}>
@@ -37,7 +56,7 @@ const Input = ({setItems}) => {
                 <label htmlFor={'productInput-form-input-totalCost'}>total cost</label>
             </div>
             <div className="productInput-form-input-container">
-                <button className={'btn'} onClick={createItemObject}>add to</button>
+                <button className={'btn'} onClick={addNewItem}>add to</button>
             </div>
 
         </form>

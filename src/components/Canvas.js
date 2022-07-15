@@ -45,7 +45,7 @@ const Canvas = ({canvas}) => {
 
     return (
         <>
-            <canvas ref={canvas} onClick={loadCanvas} id={'mychart'} width="400" height="400"></canvas>
+            <canvas ref={canvas} onClick={loadCanvas} id={'mychart'} width="100" height="100"></canvas>
         </>
        )
 }

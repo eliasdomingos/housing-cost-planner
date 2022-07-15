@@ -3,19 +3,30 @@
   font-family: 'Nunito', sans-serif;
 }
 
-html {
+html, body, .container {
   height: 100%;
+  width: 100%;
 }
 
 body {
   background: linear-gradient(#92A9BD, #7C99AC);
 }
 
+.container {
+  display: grid;
+  grid-template-areas: 'input input input'
+                        'table charts charts'
+                        'table charts charts'
+                        'table charts charts';
+}
+
 #productInput-form{
+  grid-area: input;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   .productInput-form-input-container {
     position: relative;
     margin: 0.25rem;
@@ -67,5 +78,25 @@ body {
     background-color: #393E46;
     color: white;
   }
+}
+
+#itemTable {
+  grid-area: table;
+  margin: 1rem;
+  //border-right: 1px solid black;
+  border-collapse: collapse;
+
+  td {
+    //border: 1px solid black;
+    text-align: center;
+    box-shadow: 1px 1px 1px gray;
+    margin: 5rem;
+  }
+}
+
+#mychart {
+  grid-area: charts;
+  width: 100%!important;
+  height: 100%!important;
 }
 
