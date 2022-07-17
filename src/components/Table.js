@@ -13,7 +13,7 @@ const Table = ({items}) => {
 
             </thead>
             <tbody>
-            {Object.values(items).map((row, index) => {
+            {items ? Object.values(items).map((row, index) => {
                 return (
                     <tr key={`row-${index}`}>
                         <td key={`name-${index}`}>{row['productInput-form-input-name']}</td>
@@ -22,7 +22,7 @@ const Table = ({items}) => {
                         <td key={`totalCost-${index}`}>{row['productInput-form-input-totalCost']}</td>
                     </tr>
                 )
-            })}
+            }):null}
             </tbody>
         </table>
     )
