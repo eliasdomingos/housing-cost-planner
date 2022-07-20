@@ -13,11 +13,11 @@ function App() {
 
     useEffect(() => {
         const loadLocalItems = () => {
-
-            const items = JSON.parse(localStorage.getItem('items'))
-            setItems(items)
-
-            console.log(localStorage.getItem('items'))
+            if (localStorage.getItem('items')) {
+                const items = JSON.parse(localStorage.getItem('items'))
+                setRows(Object.keys(items).length)
+                setItems(items)
+            }
         }
 
         loadLocalItems()
@@ -30,7 +30,7 @@ function App() {
           <div className="container">
               <Input setItems={setItems} items={items} rows={rows} setRows={setRows}/>
               <Table items={items}/>
-              <Canvas canvas={canvas}/>
+              <Canvas canvas={canvas} items={items}/>
           </div>
       </>
   );
